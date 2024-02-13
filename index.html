@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title></title>
+</head>
+<body>
+    <h2>Click on the tabs to see the paragraphs </h2>
+    <div class="tabs">
+        <div class="tab-sidebar">
+            <button class="tab-btn tab-btn--active" data-for-tab="1">Tab1</button>
+            <button class="tab-btn" data-for-tab="2">Tab2</button>
+            <button class="tab-btn" data-for-tab="3">Tab3</button>
+        </div>
+        <div class="tab-content tab-content--active" data-tab="1">
+            <h2>Tab1</h2>
+            <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore aliquam blanditiis ratione ut tenetur consectetur soluta repudiandae! Quaerat minus iusto corrupti nostrum non libero fugiat accusantium mollitia deleniti consequuntur nam dolore dicta, deserunt odit omnis vitae quasi laudantium, sint praesentium. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta aut et magni fugit, repellendus laborum nostrum deserunt quas est optio, rerum eaque molestiae libero magnam nam aliquid corporis delectus aliquam quidem necessitatibus quae voluptate. Veniam consequatur aliquid soluta quo nisi repellat nemo dolores ad molestiae, ipsum adipisci incidunt laboriosam deleniti, illum distinctio fugit. Quas adipisci et a asperiores sit minus nihil magnam nulla voluptatem, fugit perspiciatis voluptas nisi hic autem doloribus dolores blanditiis harum cumque amet modi laudantium nesciunt. Cumque perferendis nobis a, ipsam natus doloribus? Ad, voluptate. Totam debitis laboriosam nam tempore, suscipit ducimus cumque nesciunt voluptate non ad.
+            </p>
+        </div>
+        <div class="tab-content " data-tab="2">
+            <h2>Tab2</h2>
+            <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore aliquam blanditiis ratione ut tenetur consectetur soluta repudiandae! Quaerat minus iusto corrupti nostrum non libero fugiat accusantium mollitia deleniti consequuntur nam dolore dicta, deserunt odit omnis vitae quasi laudantium, sint praesentium. Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam aliquam fugit officiis dolor velit soluta rem, magni quis, minus perferendis nesciunt? Quod exercitationem dicta commodi quos, quasi accusantium qui. Temporibus ex ut provident quae odio vero, eaque impedit possimus eos molestias neque sed, veniam quibusdam reprehenderit debitis soluta explicabo corrupti tempore! At ad placeat repellendus quod laudantium veritatis accusantium tenetur consectetur dignissimos explicabo numquam dolorum harum, illo voluptatibus veniam nostrum error quasi consequatur porro quae sint autem. Explicabo voluptates culpa nihil amet excepturi voluptatibus numquam quae ullam! Quod earum nesciunt optio, esse eligendi pariatur facere dolorum accusantium dolore mollitia aliquid.
+            </p>
+        </div>
+        <div class="tab-content" data-tab="3">
+            <h2>Tab3</h2>
+            <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore aliquam blanditiis ratione ut tenetur consectetur soluta repudiandae! Quaerat minus iusto corrupti nostrum non libero fugiat accusantium mollitia deleniti consequuntur nam dolore dicta, deserunt odit omnis vitae quasi laudantium, sint praesentium. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate quas animi ipsam maxime inventore enim, ad atque soluta eligendi praesentium officia nostrum iusto doloremque est quod tempore consequatur. Nemo vel id atque eius, laudantium doloribus voluptatem, iusto exercitationem architecto ut iste tenetur commodi! Perspiciatis fugit quisquam facilis omnis possimus qui porro iste id corporis, numquam necessitatibus! Ullam quisquam numquam molestias harum distinctio est commodi laboriosam id, deserunt iure ipsum illo earum atque consequuntur placeat vero expedita ducimus dignissimos modi quia cum ipsa similique voluptate culpa. Quis sequi nostrum voluptatibus quae ex! Officia error fugit possimus assumenda repellendus maxime perferendis illum.
+            </p>
+        </div>
+    </div>
+    <script>
+        function setupTabs(){
+            document.querySelectorAll(`.tab-btn`).forEach((btn) => {
+                btn.addEventListener('click', ()=>{
+                    const sideBar=btn.parentElement;
+                    const tabContainer=sideBar.parentElement;
+                    const tabNumber=btn.dataset.forTab;
+                    const tabToActivate=tabContainer.querySelector(`[data-tab="${tabNumber}"]`);
+
+                    sideBar.querySelectorAll(".tab-btn").forEach(btn=>{
+                        btn.classList.remove("tab-btn--active");
+                    });
+                    tabContainer.querySelectorAll(".tab-content").forEach(tab=>{
+                        tab.classList.remove("tab-content--active")
+                    });
+                    btn.classList.add("tab-btn--active");
+                    tabToActivate.classList.add("tab-content--active");
+                });
+            });
+        }
+
+        
+        document.addEventListener("DOMContentLoaded",()=>{
+            setupTabs();
+        });
+
+    </script>
+</body>
+</html>
